@@ -1,0 +1,23 @@
+
+module priority_encoder (
+  input logic [11:0] req,
+  output logic [3:0] code
+);
+  always_comb begin
+    casez (req)
+      12'b1???????????: code = 4'd12;
+      12'b01??????????: code = 4'd11;
+      12'b001?????????: code = 4'd10;
+      12'b0001????????: code = 4'd9;
+      12'b00001???????: code = 4'd8;
+      12'b000001??????: code = 4'd7;
+      12'b0000001?????: code = 4'd6;
+      12'b00000001????: code = 4'd5;
+      12'b000000001???: code = 4'd4;
+      12'b0000000001??: code = 4'd3;
+      12'b00000000001?: code = 4'd2;
+      12'b000000000001: code = 4'd1;
+      default: code = 4'd0;
+    endcase
+  end
+endmodule
